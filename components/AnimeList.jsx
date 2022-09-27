@@ -12,9 +12,9 @@ export default function AnimeList({params,title,pageChange,setIndie}) {
     const animeData = await (await axios.get(`https://kitsu.io/api/edge/anime${params}`)).data.data;
     console.log(animeData)
 
-    let cardsData = animeData.map((e) => {
+    let cardsData = animeData.map((e,i) => {
       // if(e.title_english.includes('Season'))return
-      return <Card setIndie={setIndie} pageChange={pageChange} cardData={e.attributes} imgURL={e.attributes.posterImage.original} />;
+      return <Card key={i} setIndie={setIndie} pageChange={pageChange} cardData={e.attributes} imgURL={e.attributes.posterImage.original} />;
     });
     changeCards(cardsData);
   }
