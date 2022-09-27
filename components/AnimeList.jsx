@@ -13,7 +13,9 @@ export default function AnimeList({params,title,pageChange,setIndie}) {
     console.log(animeData)
 
     let cardsData = animeData.map((e,i) => {
-      // if(e.title_english.includes('Season'))return
+      const titleArr = e.attributes.titles[Object.keys(e.attributes.titles)[0]].split(' ')
+      const last =  titleArr[titleArr.length-1].toLowerCase()
+      if(last ==='arc' ) return
       return <Card key={i} setIndie={setIndie} pageChange={pageChange} cardData={e.attributes} imgURL={e.attributes.posterImage.original} />;
     });
     changeCards(cardsData);

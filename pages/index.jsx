@@ -2,9 +2,11 @@ import Nav from "../components/Nav"
 import Feed from "../components/Feed";
 import InfoPage from "../components/InfoPage";
 import { useSession } from "next-auth/react"
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import ReactDOM from 'react-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
-export default function Home() {
+export default function Home({word}) {
   const {data: session} = useSession();
   const [currentPage, setPage] = useState('home')
   const [indieData, setIndie] = useState(null)
@@ -20,7 +22,6 @@ export default function Home() {
     <div className="">
     <Nav pageChange={pageChange} session={session}/> 
     {renderPage()}
-    
     </div>
   )
 }
