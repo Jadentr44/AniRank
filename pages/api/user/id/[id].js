@@ -1,6 +1,6 @@
-import connectMongo from '../../../utils/connect'
+import connectMongo from '../../../../utils/connect'
 import mongoose from 'mongoose';
-import User from '../../../models/user';
+import User from '../../../../models/user';
 export default async function getUser(req, res) {
   try {
      

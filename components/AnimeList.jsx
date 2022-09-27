@@ -16,7 +16,7 @@ export default function AnimeList({params,title,pageChange,setIndie}) {
       const titleArr = e.attributes.titles[Object.keys(e.attributes.titles)[0]].split(' ')
       const last =  titleArr[titleArr.length-1].toLowerCase()
       if(last ==='arc' ) return
-      return <Card key={i} setIndie={setIndie} pageChange={pageChange} cardData={e.attributes} imgURL={e.attributes.posterImage.original} />;
+      return <Card key={i} setIndie={setIndie} pageChange={pageChange} cardData={e} imgURL={e.attributes.posterImage.original} />;
     });
     changeCards(cardsData);
   }
@@ -28,12 +28,12 @@ export default function AnimeList({params,title,pageChange,setIndie}) {
       ?<div className="justify-self-center"><Oval 
       height={80}
       width={80}
-      color="#4fa94d"
+      color="red"
       wrapperStyle={{}}
       wrapperClass=""
       visible={true}
       ariaLabel='oval-loading'
-      secondaryColor="#4fa94d"
+      secondaryColor="#F44336"
       strokeWidth={2}
       strokeWidthSecondary={2}
       />

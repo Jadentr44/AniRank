@@ -85,7 +85,7 @@ export default function Nav({  }) {
         {!session
         ?<button onClick={() => router.push("/login")} className="text-white text-lg border-2 px-2 py-1 border-white hover:bg-white hover:text-red-500">login/sign up</button>
         :<div><span className=" mx-2 text-white text-lg">{session.name}</span><Dropdown session={session}/></div>}
-         {console.log(session)}
+         
         </div>
       </div>
     </nav>
