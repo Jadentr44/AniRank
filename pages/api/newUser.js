@@ -5,18 +5,22 @@ export default async function handler(req, res) {
   try{
     await connectMongo();
 
-    let info ={
-      name:"jaden",
-      email:"admin",
-      password:"12345"
-    }
+  
+    
+    let usernameData = await User.find({username:req.body.username})
+    console.log("username",usernameData)
+    console.log("req",req.body.username)
+    if(usernameData[0]) return res.status(409).json("username already exist")
 
-    let newUser = await User.create(info)
-    if(!newUser) return res.status(400).json("error making new user")
+    let emailData = await User.find({email:req.body.email})
+    if(emailData[0]) return res.status(409).json("email already exist")
+
+    let newUser = await User.create(req.body)
+    if(!newUser) return res.status(404).json("error making new user")
 
     res.status(200).json(newUser)
   }catch(error){
-    console.log(error)
+    // console.log(error)c
     res.status(500).json(error)
   }
 }

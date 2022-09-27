@@ -8,10 +8,10 @@ export default NextAuth({
     CredentialProvider({
       name: "credentials",
       credentials: {
-        email: {
-          label: "Email",
+        username: {
+          label: "Username",
           type: "text",
-          placeholder: "johndoe@test.com",
+          placeholder: "username",
         },
         password: { label: "Password", type: "password" },
       },
@@ -19,7 +19,7 @@ export default NextAuth({
         // database look up
         await connectMongo();
 
-        let userData = await User.findOne({email:credentials.email,password:credentials.password})
+        let userData = await User.findOne({username:credentials.username,password:credentials.password})
         
         if(!userData) return null;
 
@@ -33,13 +33,15 @@ export default NextAuth({
       // first time jwt callback is run, user object is available
       if (user) {
         token.id = user.id;
+        token.username = user.username
       }
 
       return token;
     },
-    session: ({ session, token }) => {
+    session: ({ session, token,}) => {
       if (token) {
         session.id = token.id;
+        session.name = token.username;
       }
 
       return session;

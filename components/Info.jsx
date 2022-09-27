@@ -1,11 +1,15 @@
 import React from "react";
 import { useSession } from "next-auth/react"
 
-export default function InfoPage({ indieData }) {
+export default function Info({ indieData }) {
   
   const {data: session} = useSession();
   return (
+   
     <div className="flex items-center h-[90vh]">
+       {!indieData
+    ?"error"
+    :
     <div className="mx-[10%] grid grid-cols-3 gap-4">
       <div>
         <img className="w-full" src={indieData.posterImage.original} alt="" />
@@ -34,7 +38,7 @@ export default function InfoPage({ indieData }) {
         :<p className="mt-5 text-xl">log in to save</p>}</div></div>
         </div>
       </div>
-    </div>
+    </div>}
     </div>
   );
 }

@@ -4,8 +4,10 @@ import { useRouter } from "next/dist/client/router";
 import Dropdown from './Dropdown'
 
 
-export default function Nav({ session,pageChange }) {
+export default function Nav({  }) {
   const [navbar, setNavbar] = useState(false);
+  
+  const {data: session} = useSession();
   const router = useRouter();
 
   
@@ -15,7 +17,7 @@ export default function Nav({ session,pageChange }) {
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <a href="javascript:void(0)">
-              <h2 onClick={()=> pageChange('home')} className="text-2xl  font-bold text-white">MyAniRank</h2>
+              <h2 onClick={()=> router.push('/')} className="text-2xl  font-bold text-white">MyAniRank</h2>
             </a>
             <div className="md:hidden">
               <button
@@ -79,12 +81,14 @@ export default function Nav({ session,pageChange }) {
             </div>
           </div>
         </div>
-        <div className="hidden w-[15%] space-x-2 md:flex justify-end">
-        <Dropdown session={session}/>
-         
+        <div className="hidden  space-x-2 md:flex justify-end">
+        {!session
+        ?<button onClick={() => router.push("/login")} className="text-white text-lg border-2 px-2 py-1 border-white hover:bg-white hover:text-red-500">login/sign up</button>
+        :<div><span className=" mx-2 text-white text-lg">{session.name}</span><Dropdown session={session}/></div>}
+         {console.log(session)}
         </div>
       </div>
     </nav>
   );
 }
-
+// onClick={() => router.push("/api/auth/signin")}

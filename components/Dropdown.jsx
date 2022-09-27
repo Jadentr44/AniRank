@@ -33,10 +33,10 @@ export default function Example({ session }) {
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
-                <>
-                  {session ? (
+                
+                  
                     <>
-                      <a className="block px-4 py-2 text-sm bg-white-100 text-gray-900 hover:bg-gray-100 cursor-pointer">
+                      <a onClick={()=> {router.push('/profile')}} className="block px-4 py-2 text-sm bg-white-100 text-gray-900 hover:bg-gray-100 cursor-pointer">
                         view Profile
                       </a>
                       <a
@@ -46,20 +46,8 @@ export default function Example({ session }) {
                         log out
                       </a>
                     </>
-                  ) : (
-                    <>
-                      <a className="block px-4 py-2 text-sm bg-white-100 text-gray-900 hover:bg-gray-100 cursor-pointer">
-                        sign up
-                      </a>
-                      <a
-                        onClick={() => router.push("/api/auth/signin")}
-                        className="block px-4 py-2 text-sm bg-white-100 text-gray-900 hover:bg-gray-100 cursor-pointer"
-                      >
-                        login
-                      </a>
-                    </>
-                  )}
-                </>
+                  
+              
               )}
             </Menu.Item>
           </div>
