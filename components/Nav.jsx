@@ -4,7 +4,7 @@ import { useRouter } from "next/dist/client/router";
 import Dropdown from './Dropdown'
 
 
-export default function Nav({ session }) {
+export default function Nav({ session,pageChange }) {
   const [navbar, setNavbar] = useState(false);
   const router = useRouter();
 
@@ -15,7 +15,7 @@ export default function Nav({ session }) {
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
             <a href="javascript:void(0)">
-              <h2 className="text-2xl font-bold text-white">AniRank</h2>
+              <h2 onClick={()=> pageChange('home')} className="text-2xl  font-bold text-white">MyAniRank</h2>
             </a>
             <div className="md:hidden">
               <button
@@ -79,7 +79,7 @@ export default function Nav({ session }) {
             </div>
           </div>
         </div>
-        <div className="hidden space-x-2 md:inline-block">
+        <div className="hidden w-[15%] space-x-2 md:flex justify-end">
         <Dropdown session={session}/>
          
         </div>

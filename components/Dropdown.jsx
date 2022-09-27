@@ -13,7 +13,7 @@ export default function Example({ session }) {
   const router = useRouter();
 
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <Menu as="div" className="relative  inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-full justify-center rounded-full border border-gray-300 bg-white p-3 text-md font-medium text-gray-700 shadow-sm hover:bg-gray-50 ">
           <Profile />
