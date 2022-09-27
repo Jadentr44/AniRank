@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
-
+import dotenv from 'dotenv'
+dotenv.config()
 const connectMongo = async () => {
   const conn = await mongoose
-      .connect("mongodb://127.0.0.1:27017/AniRank")
+      .connect(process.env.MONGO_URI)
       .catch((err) => console.error(err));
   console.info("Mongodb Connection Established");
   return conn;

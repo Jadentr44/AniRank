@@ -12,6 +12,7 @@
     "@headlessui/react": "^1.7.2",
     "@popperjs/core": "2.9.1",
     "axios": "^0.27.2",
+    "dotenv": "^16.0.2",
     "mongoose": "^6.6.1",
     "next": "^12.2.5",
     "next-auth": "^4.12.0",
