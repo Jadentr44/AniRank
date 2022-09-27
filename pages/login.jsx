@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import axios from 'axios'
-import { Router,useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 export default function login() {
   const router = useRouter();
   const [userName,setName] = useState(null)
@@ -17,7 +17,7 @@ export default function login() {
     try{
       let newUser = await axios.post('api/newUser',data)
       console.log("new user created")
-      router.push("/api/auth/signin")
+      return
     }catch(error){
       console.log(error)
       if(error.response.status == 409) return setError(error.response.data)
@@ -42,7 +42,7 @@ export default function login() {
             <input onChange={(e)=>setEmail(e.target.value)} className='border-2 border-black' type="text" name="" id="" />
             <p>password:</p>
             <input onChange={(e)=>setPass(e.target.value)} className='border-2 border-black' type="text" name="" id="" /><br />
-            <button onClick={()=>createAccount()} className='border-2 text-xl my-4 border-red-500 px-2 rounded-md text-red-500 hover:bg-red-500 hover:text-white'>Create Account</button>
+            <button onClick={async()=>{await createAccount();router.push("/api/auth/signin")}} className='border-2 text-xl my-4 border-red-500 px-2 rounded-md text-red-500 hover:bg-red-500 hover:text-white'>Create Account</button>
           </div>
           <div className='flex justify-center items-center'>
             <div className='w-[15%] h-1 bg-red-500'></div>
