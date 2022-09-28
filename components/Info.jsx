@@ -13,6 +13,7 @@ export default function Info() {
   useEffect(() => {
     
     if (animeData){
+      if(!session) return
     if(session.watching ==animeData.titles[Object.keys(animeData.titles)[0]])
     setWatching(true)
       return

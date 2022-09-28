@@ -10,8 +10,12 @@ export default function SearchResults() {
   const [searchData, setData] = useState(null);
 
   useEffect(() => {
-    if (searchData) return;
-    getData();
+    if(name != urlState){
+      
+      getData()
+    }
+    // if (searchData) return;
+    // getData();
   });
   async function getData() {
     if (!name) return;
@@ -24,7 +28,7 @@ export default function SearchResults() {
         return <SearchCard  cardData={e} key={i} />;
       })
     );
-    
+    setURL(name)
   }
 
   return (
