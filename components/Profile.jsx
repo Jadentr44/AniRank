@@ -77,7 +77,7 @@ export default function Profile() {
                <p className="flex items-center justify-center">copy profile link <AiOutlineCopy/></p> 
               </div>
             </div>
-            <div className="col-span-4 bg-red-400">09</div>
+            <div className="col-span-4 bg-red-400">{console.log("stuff")}</div>
           </div>
         </div>
       )}

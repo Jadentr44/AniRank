@@ -5,7 +5,8 @@ const userSchema = new Schema({
   email:{type:String, required:true},
   password:{type:String, required:true},
   bio:{type:String,default:"no bio yet"},
-  watching:{type:String,default:"N/A"}
+  watching:{type:String,default:"N/A"},
+  list:{type:Array,default:[]}
 })
 
 const User = mongoose.models.User || model("User",userSchema)

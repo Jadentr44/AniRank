@@ -124,7 +124,14 @@ export default function Info() {
                 <div className="">
                   {session ? (
                     <div className="flex justify-between w-full">
-                      <button className="px-2 mt-4 rounded-md w-fit py-1 border-2 border-red-500 hover:bg-red-500 hover:text-white cursor-pointer">
+                      <button onClick={async()=>{
+                        let saved = await axios.post('/api/user/addList',{
+                          username:session.name,
+                          newData:{name:animeData.titles[Object.keys(animeData.titles)[0]],url:animeData.posterImage.original}
+                        })
+                        console.log(saved)
+                        if(!saved) alert("error saving")
+                      }} className="px-2 mt-4 rounded-md w-fit py-1 border-2 border-red-500 hover:bg-red-500 hover:text-white cursor-pointer">
                         save to list
                       </button>
                       {watching ? (
