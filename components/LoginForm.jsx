@@ -57,9 +57,9 @@ export default function LoginForm() {
           :<p className='mt-4 text-red-600'>{error}</p>}
             <p className=''>Username:</p>
             <input onChange={(e)=>setName(e.target.value)} className='border-2  border-black' type="text" name="" id="" />
-            <p>email:</p>
+            <p>Email:</p>
             <input onChange={(e)=>setEmail(e.target.value)} className='border-2 border-black' type="text" name="" id="" />
-            <p>password:</p>
+            <p>Password:</p>
             <input onChange={(e)=>setPass(e.target.value)} className='border-2 border-black' type="text" name="" id="" /><br />
             <button onClick={async()=>{await createAccount()}} className='border-2 text-xl my-4 border-red-500 px-2 rounded-md text-red-500 hover:bg-red-500 hover:text-white'>Create Account</button>
           </div>

@@ -15,7 +15,7 @@ export default function ProfileUL({data}) {
   }
   return (
     <div className="mx-[10%] rounded-br-lg border-2">
-      <h1 className="text-center text-6xl py-2 text-white bg-red-500">{data.username}'s list</h1>
+      <h1 className="text-center text-6xl py-2 text-white bg-red-500">{data.username}`&apos list</h1>
       {list}
     </div>
   )
