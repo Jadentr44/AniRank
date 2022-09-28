@@ -4,7 +4,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Bio from "./Bio";
-import AiOutlineCopy from "./icons/copy";
+import AiOutlineCopy from "./icons/Copy";
 
 export default function Profile() {
   const [userData, setData] = useState(null);
