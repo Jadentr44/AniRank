@@ -15,7 +15,7 @@ export default async function getUser(req, res) {
 
       res.status(200).json(userData);
       
-      console.log("GOT DOCUMENT!");
+      console.log("sent document");
   } catch (error) {
       console.log(error);
       res.status(500).json(error);
