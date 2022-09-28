@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Bio from "./Bio";
 import AiOutlineCopy from "./icons/Copy";
-
+import ProfileUL from "./ProfileUL";
 export default function Profile() {
   const [userData, setData] = useState(null);
   const [owner,setOwner] = useState(false)
@@ -77,7 +77,11 @@ export default function Profile() {
                <p className="flex items-center justify-center">copy profile link <AiOutlineCopy/></p> 
               </div>
             </div>
-            <div className="col-span-4 bg-red-400">{console.log("stuff")}</div>
+            <div className="col-span-4 ">
+              {!userData
+            ?"loading"
+          :<ProfileUL data={userData} />}
+          </div>
           </div>
         </div>
       )}
