@@ -36,7 +36,7 @@ export default function Example({ session }) {
                 
                   
                     <>
-                      <a onClick={()=> {router.push('/profile')}} className="block px-4 py-2 text-sm bg-white-100 text-gray-900 hover:bg-gray-100 cursor-pointer">
+                      <a onClick={()=> {router.push(`/user/${session.name}`)}} className="block px-4 py-2 text-sm bg-white-100 text-gray-900 hover:bg-gray-100 cursor-pointer">
                         view Profile
                       </a>
                       <a

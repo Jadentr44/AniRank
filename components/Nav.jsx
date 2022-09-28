@@ -6,7 +6,7 @@ import Dropdown from './Dropdown'
 
 export default function Nav({  }) {
   const [navbar, setNavbar] = useState(false);
-  
+  const [searchInput, setInput] = useState('')
   const {data: session} = useSession();
   const router = useRouter();
 
@@ -63,7 +63,12 @@ export default function Nav({  }) {
               navbar ? "block" : "hidden"
             }`}
           >
-            <input className="rounded-lg px-2 py-1" placeholder="search" type="text" />
+            <input onChange={(e)=>setInput(e.target.value)} onKeyDown={(event)=>{
+              if(event.key ==='Enter'){
+                setInput(searchInput.replace(/ /g,'20%'))
+                router.push(`/search/${searchInput}`)
+              } 
+            }} className="rounded-lg px-2 py-1" placeholder="search" type="text" />
 
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
               <a

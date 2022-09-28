@@ -34,6 +34,7 @@ export default NextAuth({
       if (user) {
         token.id = user.id;
         token.username = user.username
+        token.watching = user.watching
       }
 
       return token;
@@ -42,6 +43,7 @@ export default NextAuth({
       if (token) {
         session.id = token.id;
         session.name = token.username;
+        session.watching = token.watching;
       }
 
       return session;
