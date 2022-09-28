@@ -24,7 +24,7 @@ export default function Profile() {
   async function getData() {
     if (!name) return;
 
-    const url = `https://myanirank-oaig2aaz6-jadentr44.vercel.app/api/user/name/${name}`;
+    const url = `/api/user/name/${name}`;
     const data = await axios.get(url);
     setData(data.data[0]);
     
