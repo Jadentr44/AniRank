@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/dist/client/router";
 import Dropdown from './Dropdown'
-
+import Image from "next/image";
 
 export default function Nav({  }) {
   const [navbar, setNavbar] = useState(false);
@@ -11,13 +11,14 @@ export default function Nav({  }) {
   const router = useRouter();
 
   
-  return (
+  return (<>
     <nav className="w-full bg-red-500 shadow">
       <div className="justify-between  mx-auto lg:max-w-7xl md:items-center md:flex ">
         <div>
-          <div className="flex items-center justify-between py-3 md:py-5 md:block">
-            <a href="javascript:void(0)">
-              <h2 onClick={()=> router.push('/')} className="text-2xl  font-bold text-white">MyAniRank</h2>
+          <div className="flex items-center justify-between p-0 md:py-0 md:block">
+            <a className=" p-0" onClick={()=> router.push('/')} >
+              {/* <h2 onClick={()=> router.push('/')} className="text-2xl  font-bold text-white">MyAniRank</h2> */}
+              <Image height='80' width='200' src="/assets/logo.png" alt="" />
             </a>
             <div className="md:hidden">
               <button
@@ -93,7 +94,9 @@ export default function Nav({  }) {
          
         </div>
       </div>
+      
     </nav>
+    </>
   );
 }
 // onClick={() => router.push("/api/auth/signin")}
