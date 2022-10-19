@@ -5,19 +5,20 @@ import { Oval } from "react-loader-spinner";
 import { useSession } from "next-auth/react";
 export default function Info() {
   const [animeData, setData] = useState(null);
-  const [watching,setWatching] = useState(false)
+  const [watching, setWatching] = useState(false);
   const router = useRouter();
   const { id } = router.query;
   const { data: session } = useSession();
   console.log("sesstion:", session);
   useEffect(() => {
-    
-    if (animeData){
-      if(!session) return
-    if(session.watching ==animeData.titles[Object.keys(animeData.titles)[0]])
-    setWatching(true)
-      return
-    } 
+    if (animeData) {
+      if (!session) return;
+      if (
+        session.watching == animeData.titles[Object.keys(animeData.titles)[0]]
+      )
+        setWatching(true);
+      return;
+    }
 
     getData();
   });
@@ -30,20 +31,19 @@ export default function Info() {
     setData(data);
   }
 
-  async function updateWatching(){
-   const data = {
-      newWatching:animeData.titles[Object.keys(animeData.titles)[0]],
-      username:session.name
+  async function updateWatching() {
+    const data = {
+      newWatching: animeData.titles[Object.keys(animeData.titles)[0]],
+      username: session.name,
+    };
+    try {
+      let update = await axios.put("/api/user/watching", data);
+      setWatching(true);
+      session.watching = animeData.titles[Object.keys(animeData.titles)[0]];
+    } catch (error) {
+      console.log(error);
+      alert("error");
     }
-    try{
-      let update = await axios.put('/api/user/watching',data)
-    setWatching(true)
-    session.watching=animeData.titles[Object.keys(animeData.titles)[0]]
-    }catch(error){
-      console.log(error)
-      alert("error")
-    }
-    
   }
   return (
     <div className="flex items-center h-[90vh]">
@@ -124,14 +124,22 @@ export default function Info() {
                 <div className="">
                   {session ? (
                     <div className="flex justify-between w-full">
-                      <button onClick={async()=>{
-                        let saved = await axios.post('/api/user/addList',{
-                          username:session.name,
-                          newData:{name:animeData.titles[Object.keys(animeData.titles)[0]],url:animeData.posterImage.original}
-                        })
-                        console.log(saved)
-                        if(!saved) alert("error saving")
-                      }} className="px-2 mt-4 rounded-md w-fit py-1 border-2 border-red-500 hover:bg-red-500 hover:text-white cursor-pointer">
+                      <button
+                        onClick={async () => {
+                          let saved = await axios.post("/api/user/addList", {
+                            username: session.name,
+                            newData: {
+                              name: animeData.titles[
+                                Object.keys(animeData.titles)[0]
+                              ],
+                              url: animeData.posterImage.original,
+                            },
+                          });
+                          console.log(saved);
+                          if (!saved) alert("error saving");
+                        }}
+                        className="px-2 mt-4 rounded-md w-fit py-1 border-2 border-red-500 hover:bg-red-500 hover:text-white cursor-pointer"
+                      >
                         save to list
                       </button>
                       {watching ? (
@@ -139,7 +147,10 @@ export default function Info() {
                           watching
                         </button>
                       ) : (
-                        <button onClick={()=> updateWatching()} className="px-2 mt-4 rounded-md w-fit py-1 border-2 border-red-500 hover:bg-red-500 hover:text-white cursor-pointer">
+                        <button
+                          onClick={() => updateWatching()}
+                          className="px-2 mt-4 rounded-md w-fit py-1 border-2 border-red-500 hover:bg-red-500 hover:text-white cursor-pointer"
+                        >
                           watching
                         </button>
                       )}

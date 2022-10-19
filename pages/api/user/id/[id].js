@@ -11,7 +11,7 @@ export default async function getUser(req, res) {
       
       const userData = await User.find({ _id: id });
 
-      if(!userData) return res.json(404).json('error error finding user')
+      if(!userData) return res.json(404).json('error finding user')
 
       res.status(200).json(userData);
       

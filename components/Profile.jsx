@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import Bio from "./Bio";
 import AiOutlineCopy from "./icons/Copy";
 import ProfileUL from "./ProfileUL";
+// import ProfileList from "./ProfileList";
 export default function Profile() {
   const [userData, setData] = useState(null);
   const [owner,setOwner] = useState(false)
@@ -53,9 +54,9 @@ export default function Profile() {
       ) : (
         <div className="mx-[10%] mt-12  ">
           <div class="grid grid-cols-5 ">
-            <div className="mx-[15%]">
-              <div className=" border-2 border-red-500">
-                <h1 className="text-center bg-red-500 text-white text-2xl">
+            <div className="mx-[15%] ">
+              <div className=" border-2 border-red-500 rounded-t-lg">
+                <h1 className="text-center bg-red-500 text-white py-1  font-bold text-2xl">
                   {userData.username}
                 </h1>
                 <img
@@ -66,21 +67,22 @@ export default function Profile() {
               </div>
               <Bio owner={owner} bio={userData.bio} />
               <div className="border-2 border-red-500">
-                <h1 className="text-white bg-red-500 text-lg text-center">watching:</h1>
-                <p className="text-center">{userData.watching}</p>
+                <h1 className="text-white bg-red-500 text-xl font-bold py-1 text-center ">Watching</h1>
+                <p className="text-center my-2">{userData.watching}</p>
               </div>
               <div className="border-2 border-red-500">
-                <h1 className="text-white bg-red-500 text-lg text-center">friends:</h1>
-                <p className="text-center italic text-gray-400">(coming soon)</p>
+                <h1 className="text-white bg-red-500 text-xl font-bold py-1 text-center">Friends</h1>
+                <p className="text-center italic text-gray-400 my-2">(coming soon)</p>
               </div>
-              <div onClick={() => {navigator.clipboard.writeText(window.location.href)}} className="text-lg text-center text-white bg-red-500 cursor-pointer">
-               <p className="flex items-center justify-center">copy profile link <AiOutlineCopy/></p> 
+              <div onClick={() => {navigator.clipboard.writeText(window.location.href)}} className="text-lg text-center text-white bg-red-500 cursor-pointer rounded-b-lg">
+               <p className="flex items-center font-bold py-1 justify-center">copy profile link <AiOutlineCopy/></p> 
               </div>
             </div>
             <div className="col-span-4 ">
               {!userData
             ?"loading"
-          :<ProfileUL data={userData} />}
+             :<ProfileUL data={userData} />}
+          {/*  :<ProfileUL data={userData} />} */}
           </div>
           </div>
         </div>

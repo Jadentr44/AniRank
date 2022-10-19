@@ -15,7 +15,7 @@ export default function Bio({ owner, bio }) {
         <div className="invisible">
           <AiOutlineCheckCircle />
         </div>
-        <h1 className="text-white text">bio:</h1>
+        <h1 className="text-white text text-xl my-1 font-bold">Bio</h1>
         {bioChange ? (
           <div onClick={() => setChange(false)} className="cursor-pointer">
             <AiOutlineCheckCircle />
