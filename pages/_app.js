@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import '../styles/style.css'
 import { SessionProvider } from "next-auth/react";
 import React, { useState } from "react";
 import { useSession } from "next-auth/react"
