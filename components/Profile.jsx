@@ -5,16 +5,14 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Bio from "./Bio";
 import AiOutlineCopy from "./icons/Copy";
-import ProfileUL from "./ProfileUL";
+
 import ProfileList from "./ProfileList";
-import { Container } from "./profileList/Container";
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
+
 export default function Profile() {
   const [userData, setData] = useState(null);
   const [owner,setOwner] = useState(false)
-  const router = useRouter();
   const { data: session } = useSession();
+  const router = useRouter();
   const { name } = router.query;
 
 

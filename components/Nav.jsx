@@ -69,7 +69,7 @@ export default function Nav({  }) {
                 setInput(searchInput.replace(/ /g,'20%'))
                 router.push(`/search/${searchInput}`)
               } 
-            }} className="rounded-lg px-2 py-1" placeholder="search" type="text" />
+            }} className="rounded-lg w-[100%] px-2 py-1" placeholder="search" type="text" />
 
             <div className="mt-3 space-y-2 lg:hidden md:inline-block">
               <a
