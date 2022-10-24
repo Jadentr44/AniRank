@@ -22,7 +22,7 @@ export default function ProfileList({data}) {
       <div className='relative text-center'>
         {!listChanged?"":<button onClick={()=>{setChange(false),saveList()}} className='right-2 top-0 bottom-0 my-2 absolute border-2 border-white rounded-full px-1 bg-red-500 text-white'>save changes</button>}
         
-        <h1 className='text-center text-3xl font-bold py-2 bg-red-500 text-white rounded-t-xl'>{name}'s list</h1>
+        <h1 className='text-center text-3xl font-bold py-2 bg-red-500 text-white rounded-t-xl'>{name}&rsquo;s list</h1>
       </div>
       <List
         values={items}
