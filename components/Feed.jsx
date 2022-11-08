@@ -29,7 +29,7 @@ export default function Feed({}) {
                 <h4>episodes:{main.episodes}</h4>
               </div>
               <div className="lg:block flex mx-[5%]">
-              <p className="lg:w-2/3 w-full mx-auto  mt-5 text-sm lg:text-lg">
+              <p className="lg:w-2/3 w-full mx-auto  mt-5 text-sm lg:text-lg text-black">
                 {main.desc.length > 500
                   ? main.desc.substring(0, 500) + "..."
                   : main.desc}
