@@ -2,12 +2,22 @@ import React, { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import AiOutlineCheckCircle from "./icons/Check";
+import axios from "axios";
 export default function Bio({ owner, bio }) {
   const router = useRouter();
   const { data: session } = useSession();
   const { name } = router.query;
   const [bioChange, setChange] = useState(false);
+  const [bioValue, setBio] = useState(false);
+async function updateBio(){
+  setChange(false)
+  let res = await axios.post('/api/user/updateBio',{
+    username:name,
+    bio:bioValue,
+  })
+  console.log(res)
 
+}
   return (
     <div className="border-2 relative border-b-0 border-red-500">
       <div></div>
@@ -17,7 +27,7 @@ export default function Bio({ owner, bio }) {
         </div>
         <h1 className="text-white text text-xl my-1 font-bold">Bio</h1>
         {bioChange ? (
-          <div onClick={() => setChange(false)} className="cursor-pointer">
+          <div onClick={() => updateBio()} className="cursor-pointer">
             <AiOutlineCheckCircle />
           </div>
         ) : (
@@ -29,7 +39,7 @@ export default function Bio({ owner, bio }) {
       <p className="px-3">
         {owner ? (
           <textarea
-            onChange={() => setChange(true)}
+            onChange={(e) => {setChange(true);setBio(e.target.value)}}
             placeholder="enter bio"
             className="w-full h-[10vh]"
           >

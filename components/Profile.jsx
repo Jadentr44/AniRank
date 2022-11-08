@@ -38,7 +38,7 @@ export default function Profile() {
     }
   }
   return (
-    <div>
+    <div style={{zIndex:0}}>
       {!userData ? (
         <Oval
           height={80}
@@ -54,8 +54,23 @@ export default function Profile() {
         />
       ) : (
         <div className="mx-[10%] mt-12  ">
-          <div class="grid grid-cols-5 ">
-            <div className="mx-[15%] ">
+          <div class="block lg:grid grid-cols-5 ">
+            {/* small profile */}
+            <div className=" lg:hidden block">
+            <div className=" border-2 border-red-500 rounded-t-lg">
+              <h1 className="text-center text-4xl text-white bg-red-500 font-bold py-2">{name}</h1>
+              <div className="flex">
+              <img
+                  className="w-1/2 rounded-tl"
+                  src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                  alt=""
+                />
+              <div>info</div>
+              </div>
+            </div>
+            </div>
+            {/* large profile */}
+            <div className="mx-[15%] lg:block hidden ">
               <div className=" border-2 border-red-500 rounded-t-lg">
                 <h1 className="text-center bg-red-500 text-white py-1  font-bold text-2xl">
                   {userData.username}
@@ -82,7 +97,7 @@ export default function Profile() {
             <div className="col-span-4 ">
               {!userData
             ?"loading"
-             :<ProfileList data={userData} />}
+             :<ProfileList data={userData} owner={owner} />}
           {/*  :<ProfileUL data={userData} />} */}
           </div>
           </div>

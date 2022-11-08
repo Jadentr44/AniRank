@@ -3,7 +3,7 @@ import { List, arrayMove } from 'react-movable';
 import Grip from './icons/Grip';
 import { useRouter } from "next/router";
 import axios from 'axios';
-export default function ProfileList({data}) {
+export default function ProfileList({data,owner}) {
   const [items, setItems] = useState(data.list)
   const [listChanged, setChange] = useState(false)
   const router = useRouter();
@@ -16,8 +16,8 @@ export default function ProfileList({data}) {
     console.log(res)
   }
   return (
-    <div
-    className='w-[65%] mx-auto'
+    <div style={{zIndex:0}}
+    className='lg:w-[65%] mt-12 lg:mt-0 mx-auto'
     >
       <div className='relative text-center'>
         {!listChanged?"":<button onClick={()=>{setChange(false),saveList()}} className='right-2 top-0 bottom-0 my-2 absolute border-2 border-white rounded-full px-1 bg-red-500 text-white'>save changes</button>}
@@ -60,14 +60,15 @@ export default function ProfileList({data}) {
                 className='px-4 h-full border-r-2'
                 style={{
                   cursor: isDragged ? 'grabbing' : 'grab',
+                  display: owner ? 'block':'none'
                   
                 }}
                 tabIndex={-1}
               >
                <Grip />
               </button>
-              <img className='h-[15vh] mr-4' src={value.url} alt="" />
-              <div className='text-2xl'>{value.name}</div>
+              <img className='  h-32 mr-4' src={value.url} alt="" />
+              <div className='lg:text-2xl text-lg'>{value.name}</div>
                 </div>
 
                 <div className=' border-l-2 flex items-center'>
