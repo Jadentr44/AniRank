@@ -16,27 +16,33 @@ export default function Feed({}) {
 
   return (
     <div className="pt-[4.4rem]">
-      <div style={{ zIndex: 20 }} className="fixed mx-[10%] left-0 right-0 ">
-        <div className="relative bg-white flex justify-center h-fit   min-h-[38vh] ">
-          <img className=" h-[22rem] w-[14rem] my-auto" src={main.url} alt="" />
-          <div className=" w-2/3 text-center">
+      <div style={{ zIndex: 20 }} className="fixed lg:mx-[10%] left-0 right-0 ">
+        <div className="relative bg-white flex justify-center h-fit   min-h-[38vh] w-full">
+          <img className="lg:block hidden h-[22rem] w-[14rem] my-auto" src={main.url} alt="" />
+          <div className=" lg:w-2/3 text-center">
             
-              <h1 className="text-4xl"> {main.name}</h1>
-              <div className="flex justify-around mx-[15%] flex-nowrap">
+              <h1 className="lg:text-4xl text-xl"> {main.name}</h1>
+              <div className="flex justify-around  lg:mx-[15%] mx-[5%] flex-nowrap">
                 <h4>Rating:{main.rating}</h4>
                 <h4>age:{main.age}</h4>
                 <h4>rank:{main.rank}</h4>
                 <h4>episodes:{main.episodes}</h4>
               </div>
-
-              <p className="w-2/3 mx-auto  mt-5 text-lg">
+              <div className="lg:block flex mx-[5%]">
+              <p className="lg:w-2/3 w-full mx-auto  mt-5 text-sm lg:text-lg">
                 {main.desc.length > 500
                   ? main.desc.substring(0, 500) + "..."
                   : main.desc}
               </p>
+              <div className="mt-4">
+              <img className="lg:hidden block h-[12rem] w-[15rem] my-auto" src={main.url} alt="" />
               <button onClick={()=> {router.push(`/anime/${main.id}`)}} className="border-2 mt-5 border-black bg-red-500 text-white hover:bg-white hover:text-red-500 rounded-full px-2 py-1 text-xl ">
                 see full page
               </button>
+              </div>
+              
+              </div>
+              
             
           </div>
         </div>

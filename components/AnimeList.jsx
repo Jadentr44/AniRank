@@ -30,7 +30,7 @@ export default function AnimeList({params,title,main,setMain}) {
     row.scrollLeft = row.scrollLeft + 280;
   }
   return (
-    <div className="mx-[10%]">
+    <div className="lg:mx-[10%]">
       <h2 className="text-3xl mt-6 mb-3">{title}:</h2>
       
       <div className="flex  relative">
@@ -39,7 +39,7 @@ export default function AnimeList({params,title,main,setMain}) {
           <MdChevronLeft size={40} />
           </button>
          </div>
-       <div id={title} className="flex lg:overflow-x-hidden scroll  scroll-smooth relative">
+       <div id={title} className="flex  overflow-hidden scroll  scroll-smooth relative">
         
        {!animeCards
       ?<div className="justify-self-center"><Oval 
