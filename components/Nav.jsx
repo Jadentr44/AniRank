@@ -4,7 +4,7 @@ import { useRouter } from "next/dist/client/router";
 import Dropdown from './Dropdown'
 import Image from "next/image";
 
-export default function Nav({  }) {
+export default function Nav({fixed  }) {
   const [navbar, setNavbar] = useState(false);
   const [searchInput, setInput] = useState('')
   const {data: session} = useSession();
@@ -12,7 +12,7 @@ export default function Nav({  }) {
 
   
   return (<>
-    <nav style={{zIndex:30}} className="w-full fixed left-0 right-0 bg-red-500 shadow">
+    <nav style={{zIndex:30}} className={`w-full ${fixed?"fixed":'absolute'} left-0 right-0 top-0 bg-red-500 shadow`}>
       <div className="justify-between   mx-auto lg:max-w-7xl md:items-center md:flex ">
         <div>
           <div className="flex items-center justify-between p-0 md:py-0 md:block">

@@ -38,20 +38,21 @@ export default function Profile() {
     }
   }
   return (
-    <div style={{zIndex:0}}>
+    <div className="pt-14" style={{zIndex:0}}>
       {!userData ? (
-        <Oval
-          height={80}
-          width={80}
-          color="red"
-          wrapperStyle={{}}
-          wrapperClass=""
-          visible={true}
-          ariaLabel="oval-loading"
-          secondaryColor="#F44336"
-          strokeWidth={2}
-          strokeWidthSecondary={2}
-        />
+         <div className="h-screen w-full flex justify-center items-center">
+         <Oval
+           height={"30vh"}
+           width={"30vh"}
+           color="red"
+           wrapperStyle={{}}
+           wrapperClass=""
+           visible={true}
+           ariaLabel="oval-loading"
+           secondaryColor="#F44336"
+           strokeWidth={2}
+           strokeWidthSecondary={2}
+         /></div>
       ) : (
         <div className="mx-[10%] mt-12  ">
           <div class="block lg:grid grid-cols-5 ">

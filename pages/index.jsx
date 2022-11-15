@@ -12,7 +12,7 @@ export default function Home({setIndie}) {
  
   return (
     <div className="">
-    <Nav  /> 
+    <Nav fixed={true}  /> 
     
     <Feed setIndie={setIndie} />
     </div>

@@ -32,11 +32,12 @@ export default function SearchResults() {
   }
 
   return (
-    <div>
+    <div className="pt-14">
       {!searchData ? (
+        <div className="h-screen w-full flex justify-center items-center">
         <Oval
-          height={80}
-          width={80}
+          height={"30vh"}
+          width={"30vh"}
           color="red"
           wrapperStyle={{}}
           wrapperClass=""
@@ -45,7 +46,7 @@ export default function SearchResults() {
           secondaryColor="#F44336"
           strokeWidth={2}
           strokeWidthSecondary={2}
-        />
+        /></div>
       ) : (
         <div className="mx-[10%] flex flex-wrap justify-around my-8">
           {searchData}
