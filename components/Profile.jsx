@@ -17,7 +17,7 @@ export default function Profile() {
 
 
   useEffect(() => {
-    console.log('owner',owner);
+   
     if (!userData){
     getData();
     }

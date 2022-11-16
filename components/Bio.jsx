@@ -15,7 +15,7 @@ async function updateBio(){
     username:name,
     bio:bioValue,
   })
-  console.log(res)
+
 
 }
   return (

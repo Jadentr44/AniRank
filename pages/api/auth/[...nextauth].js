@@ -18,9 +18,9 @@ export default NextAuth({
       authorize: async (credentials) => {
         // database look up
         await connectMongo();
-        console.log("connected")
+      
         let userData = await User.findOne({username:credentials.username,password:credentials.password})
-        console.log(userData)
+       
         if(!userData) return null;
 
         // login failed

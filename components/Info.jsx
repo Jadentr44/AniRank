@@ -9,7 +9,7 @@ export default function Info() {
   const router = useRouter();
   const { id } = router.query;
   const { data: session } = useSession();
-  console.log("sesstion:", session);
+
   useEffect(() => {
     if (animeData) {
       if (!session) return;
@@ -27,7 +27,7 @@ export default function Info() {
 
     const url = `https://kitsu.io/api/edge/anime/${id}`;
     const data = await (await axios.get(url)).data.data.attributes;
-    console.log(data);
+
     setData(data);
   }
 
@@ -41,7 +41,7 @@ export default function Info() {
       setWatching(true);
       session.watching = animeData.titles[Object.keys(animeData.titles)[0]];
     } catch (error) {
-      console.log(error);
+
       alert("error");
     }
   }
@@ -135,7 +135,7 @@ export default function Info() {
                               url: animeData.posterImage.original,
                             },
                           });
-                          console.log(saved);
+                         
                           if (!saved) alert("error saving");
                         }}
                         className="px-2 mt-4 rounded-md w-fit py-1 border-2 border-red-500 hover:bg-red-500 hover:text-white cursor-pointer"

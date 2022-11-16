@@ -5,7 +5,7 @@ export default async function updateList(req, res) {
     await connectMongo();
 
     
-    console.log(req.body);
+
     const userData = await User.findOne({ username: req.body.username });
     
     
@@ -14,7 +14,7 @@ export default async function updateList(req, res) {
     })
     res.status(200).json(newData)
   } catch (error) {
-    console.log(error);
+
     res.status(500).json(error);
   }
 }

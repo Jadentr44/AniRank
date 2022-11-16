@@ -34,10 +34,10 @@ export default function LoginForm() {
     }
     try{
       let newUser = await axios.post('api/newUser',data)
-      console.log("new user created")
+      
       router.push('/api/auth/signin')
     }catch(error){
-      console.log(error)
+  
       if(error.response.status == 409) return setError(error.response.data)
       setError("error making user")
     }

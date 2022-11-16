@@ -13,7 +13,7 @@ export default function ProfileList({data,owner}) {
       username:name,
       newList:items
     })
-    console.log(res)
+    
   }
   return (
     <div style={{zIndex:0}}

@@ -11,7 +11,7 @@ export default function AnimeList({params,title,main,setMain}) {
   }, []);
   async function renderCards() {
     const animeData = await (await axios.get(`https://kitsu.io/api/edge/anime${params}`)).data.data;
-    console.log(animeData)
+    
 
     let cardsData = animeData.map((e,i) => {
       const titleArr = e.attributes.titles[Object.keys(e.attributes.titles)[0]].split(' ')

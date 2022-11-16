@@ -6,7 +6,7 @@ export default async function updateWatching(req, res) {
     await connectMongo();
 
     
-    console.log(req.body);
+
     const userData = await User.findOneAndUpdate({ username: req.body.username },{watching:req.body.newWatching});
 
     if(!userData) return res.status(400).json("error updating")
@@ -14,7 +14,7 @@ export default async function updateWatching(req, res) {
 
     
   } catch (error) {
-    console.log(error);
+
     res.status(500).json(error);
   }
 }

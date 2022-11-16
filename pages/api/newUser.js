@@ -8,8 +8,7 @@ export default async function handler(req, res) {
   
     
     let usernameData = await User.find({username:req.body.username})
-    console.log("username",usernameData)
-    console.log("req",req.body.username)
+    
     if(usernameData[0]) return res.status(409).json("username already exist")
 
     let emailData = await User.find({email:req.body.email})
