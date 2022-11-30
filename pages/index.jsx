@@ -114,6 +114,7 @@ export default function Home({}) {
             •
             <a
               target={"_blank"}
+              rel="noreferrer"
               className="text-red-500 ml-2"
               href={`https://www.youtube.com/watch?v=${modalInfo.attributes.youtubeVideoId}`}
             >

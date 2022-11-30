@@ -48,7 +48,7 @@ export default function SearchResults() {
           />
         </div>
       ) : (<div className="mt-14">
-        <h1 className="md:text-3xl text-xl mb-4 ">Showing Results For "{router.query.name}"</h1>
+        <h1 className="md:text-3xl text-xl mb-4 ">Showing Results For &ldquo;{router.query.name}&ldquo;</h1>
         <div className=" flex flex-wrap justify-between mb-20">
           {searchData}
         </div>
