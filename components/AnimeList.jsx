@@ -33,7 +33,7 @@ export default function AnimeList({params,title,setOpen,setModal}) {
   }
   return (
     <div className="lg:mx-[10%] ">
-      <h2 className="text-3xl mt-6 mb-3">{title}:</h2>
+      <h1 className="text-3xl mt-6 mb-3 ">{title}:</h1>
       
       <div className="flex  relative">
       <div className="  flex items-center " >
@@ -60,8 +60,8 @@ export default function AnimeList({params,title,setOpen,setModal}) {
       :animeCards}
       
        </div>
-       <div className="absolute left-10 top-0 bottom-0 w-12 bg-gradient-to-r from-[#FAF9F6] z-10"></div>
-      <div className="absolute right-10 top-0 bottom-0 w-12 bg-gradient-to-l from-[#FAF9F6]"></div>
+       <div className="absolute left-10 top-0 bottom-0 lg:w-12 w-5 bg-gradient-to-r from-[#FAF9F6] z-10"></div>
+      <div className="absolute right-10 top-0 bottom-0 lg:w-12 w-5 bg-gradient-to-l from-[#FAF9F6]"></div>
         <div className="flex z-10 items-center  w-12" onClick={slideRight}>
           <button >
           <MdChevronRight size={40} />

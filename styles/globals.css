@@ -45,3 +45,11 @@ html {
   background-color:white;
   color: var(--main);
 }
+h1{
+  font-weight: 500;
+  border-left: solid .3rem #dc2626;
+  padding-left: .5rem;
+}
+.textShadow{
+  text-shadow: red 1px 2px;
+}

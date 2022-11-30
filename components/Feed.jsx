@@ -32,6 +32,30 @@ export default function Feed({setOpen,setModal}) {
           }
           title={"Comedy Anime"}
         />
+        <AnimeList
+        setModal={setModal}
+          setOpen={setOpen}
+          params={
+            "?filter[categories]=slice&sort=-averageRating&page[limit]=20"
+          }
+          title={"Slice Of Life"}
+        />
+        <AnimeList
+        setModal={setModal}
+          setOpen={setOpen}
+          params={
+            "?filter[categories]=sports&sort=-averageRating&page[limit]=20"
+          }
+          title={"Sports"}
+        />
+        <AnimeList
+        setModal={setModal}
+          setOpen={setOpen}
+          params={
+            "?filter[categories]=horror&sort=-averageRating&page[limit]=20"
+          }
+          title={"Horror"}
+        />
       </div>
     </div>
   );

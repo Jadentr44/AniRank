@@ -1,7 +1,7 @@
-import NextAuth from 'next-auth'
+import NextAuth from "next-auth";
 import CredentialProvider from "next-auth/providers/credentials";
-import connectMongo from '../../../utils/connect';
-import User from '../../../models/user';
+import connectMongo from "../../../utils/connect";
+import User from "../../../models/user";
 
 export default NextAuth({
   providers: [
@@ -18,12 +18,15 @@ export default NextAuth({
       authorize: async (credentials) => {
         // database look up
         await connectMongo();
-      
-        let userData = await User.findOne({username:credentials.username,password:credentials.password})
-       
-        if(!userData) return null;
+
+        let userData = await User.findOne({
+          username: credentials.username,
+          password: credentials.password,
+        });
 
         // login failed
+        if (!userData) return null;
+
         return userData;
       },
     }),
@@ -33,13 +36,13 @@ export default NextAuth({
       // first time jwt callback is run, user object is available
       if (user) {
         token.id = user.id;
-        token.username = user.username
-        token.watching = user.watching
+        token.username = user.username;
+        token.watching = user.watching;
       }
 
       return token;
     },
-    session: ({ session, token,}) => {
+    session: ({ session, token }) => {
       if (token) {
         session.id = token.id;
         session.name = token.username;
@@ -47,11 +50,19 @@ export default NextAuth({
       }
 
       return session;
-    }
+    },
+    async redirect({ url, baseUrl }) {
+      console.log("baseURL:", baseUrl);
+      console.log("url:", url);
+      return "/";
+    },
   },
   secret: "test",
   jwt: {
     secret: "test",
     encryption: true,
+  },
+  pages: {
+    signIn: "/signin",
   },
 });

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/dist/client/router";
 import { motion } from "framer-motion";
@@ -8,30 +8,54 @@ import { ImExit } from "react-icons/im";
 import Dropdown from "./Dropdown";
 import Image from "next/image";
 
-export default function Nav({ fixed }) {
-  const { data: session } = useSession();
+export default function Nav() {
   const router = useRouter();
+  // cookies for logged in or not
+  const { data: session } = useSession();
+  // var for what page we are on(phone nav)
   const [page, setPage] = useState(null);
+  // search input (md and bigger)
+  const input = useRef(null);
+  // update page when ever url changes
   useEffect(() => {
     console.log(router.pathname);
     if (router.pathname == "/") setPage("home");
     if (router.pathname.includes("user")) setPage("profile");
+    if (router.pathname.includes("search")) setPage("search");
   }, [router]);
+  // function to get search value and change url
+  const handleSearch = () => {
+    let value = input.current.value;
+    if (!value) return;
+    console.log(`/search/${value}`);
+    router.push(`/search/${value}`);
+  };
   return (
     <nav className=" ">
       <div className="z-50 absolute flex justify-between  md:fixed top-0 left-0 right-0 bg-red-600 px-0 md:px-[5%] lg:px-[10%]">
         <div className="h-16 w-auto md:w-[30%]">
           <img
             onClick={() => router.push("/")}
-            className="h-full  mx-auto md:mx-0"
+            className="min-h-full  mx-auto md:mx-0"
             src="/assets/logo.svg"
             alt=""
           />
         </div>
-        <div className="w-full hidden md:block h-10 my-auto ">
-          <div  className="w-2/3 h-full overflow-hidden bg-white mx-auto rounded-full flex">
-          <AiOutlineSearch size={"100%"} className="my-auto h-full w-5  mx-2 " />
-          <input className="  w-full outline-0 pr-5" type="text " />
+        <div className="w-full  h-10 my-auto ">
+          <div className=" mx-3 md:w-2/3 h-full overflow-hidden bg-white md:mx-auto rounded-full flex">
+            <AiOutlineSearch
+              size={"100%"}
+              className="my-auto h-full w-5  mx-2 "
+              onClick={handleSearch}
+            />
+            <input
+              ref={input}
+              className="  w-full outline-0 pr-5"
+              type="text "
+              onKeyDown={(e) => {
+                if (e.key == "Enter") handleSearch();
+              }}
+            />
           </div>
         </div>
         <div className="w-[30%] hidden md:flex justify-end items-center">
@@ -49,20 +73,7 @@ export default function Nav({ fixed }) {
             </div>
           )}
         </div>
-        {session ? (
-          <div
-            onClick={signOut}
-            className=" md:hidden my-auto mr-4  text-white min-w-fit"
-          >
-            <ImExit className="h-6 w-auto mx-auto" size={"100%"} />
-             <p>
-
-            Log out
-             </p>
-          </div>
-        ) : (
-          ""
-        )}
+       
       </div>
       {/* bottom nav */}
       <div className="fixed md:hidden  bottom-0 left-0 right-0  border-2  h-[4rem] min-h-fit bg-white  z-50 flex items-center p-5 justify-around">
@@ -78,6 +89,7 @@ export default function Nav({ fixed }) {
         <div
           style={{ color: page == "search" ? "red" : "gray" }}
           className="text-center"
+          onClick={() => router.push("/search")}
         >
           {" "}
           <AiOutlineSearch className="h-10 w-fit mx-auto" size={"100%"} />{" "}
