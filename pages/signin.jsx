@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/dist/client/router";
 import { motion } from "framer-motion";
-export default function signin({}) {
+export default function Signin({}) {
   const router = useRouter();
   //getting login cookies
   const { data: session } = useSession();
