@@ -39,35 +39,35 @@ export default function Home({}) {
         className="relative z-50"
       >
         <div className=" fixed inset-0 bg-gray-100 opacity-70"></div>
-        <div className="fixed inset-0 flex items-center justify-center p-4  ">
+        <div className="fixed inset-0 flex items-end md:items-center justify-center px-4  ">
           {!modalInfo ? (
             "loading"
           ) : (
             <div>
               <Dialog.Panel
                 className={
-                  "lg:w-[60rem] md:w-[45rem] w-[90vw] max-h-[85vh]  rounded bg-white border-2 relative"
+                  "lg:w-[60rem] md:w-[45rem] w-screen max-h-[85vh]  rounded bg-white border-2 relative"
                 }
               >
                 <button
                   onClick={() => setOpen(false)}
-                  className="absolute right-0 top-0  w-12 h-12 p-2 rounded-full text-back md:bg-white hover:bg-slate-200"
+                  className="absolute right-0 md:top-0 -top-12  w-12 h-12 p-2 rounded-full text-back md:bg-white hover:bg-slate-200"
                 >
                   <AiOutlineCloseCircle size={"100%"} />
                 </button>
-                <div className="md:flex w-full">
-                  <div className="md:w-1/5 w-[60%] mx-auto">
-                    <img src={modalInfo.attributes.posterImage.original} alt="" />
+                <div className="flex w-full">
+                  <div className="w-1/3 md:w-1/5 flex items-center  mx-auto">
+                    <img className="my-auto  bg-red-200" src={modalInfo.attributes.posterImage.original} alt="" />
                   </div>
-                  <div className="w-full">
+                  <div className="w-2/3 md:w-4/5">
                     <h2
                     onClick={() => {
                       router.push(`/anime/${modalInfo.id}`);
                     }} 
                       // onClick={() => console.log(modalInfo)}
-                      className="lg:text-4xl font-semibold flex max-w-[90%] w-fit  pl-2  text-xl mb-2 cursor-pointer"
+                      className="lg:text-4xl font-semibold flex md:max-w-[90%] w-fit  pl-2  text-xl mb-2 cursor-pointer"
                     >
-                      <div className="w-fit cursor-pointer" onMouseEnter={()=>setHover(true)}
+                      <div className=" cursor-pointer " onMouseEnter={()=>setHover(true)}
                     onMouseLeave={()=>setHover(false)}>
 
                       {modalInfo.attributes.titles[Object.keys(modalInfo.attributes.titles)[0]]}
@@ -78,34 +78,26 @@ export default function Home({}) {
                         size={"100%"}
                       />
                     </h2>
-                    <div className="flex flex-wrap pl-5">
-      <p className="md:w-full w-1/2 text-xl my-1">
-        {modalInfo.attributes.episodeCount} episodes •{" "}
-        {modalInfo.attributes.episodeLength} minutes
+                    <div className="flex flex-wrap pl-3 ">
+      <p className="w-full lg:text-2xl md:text-xl sm:text-lg my-1">
+        {modalInfo.attributes.episodeCount} episodes 
       </p>
-      <p className="md:w-full w-1/2 text-xl my-1">
-        {modalInfo.attributes.ageRating}
+      <p className="w-full lg:text-2xl md:text-xl sm:text-lg my-1">
+        rated:{modalInfo.attributes.ageRating}
       </p>
-      <p className="md:w-full w-1/2 text-xl my-1">
+      <p className="w-full lg:text-2xl md:text-xl sm:text-lg my-1">
         {modalInfo.attributes.createdAt ? (
           <span>
             {modalInfo.attributes.startDate.substring(0, 4)}
-            {modalInfo.attributes.endDate ? (
-              <span>{`-${modalInfo.attributes.endDate.substring(
-                0,
-                4
-              )}`}</span>
-            ) : (
-              ""
-            )}
+            
           </span>
         ) : (
           ""
         )}
       </p>
-      <p className="flex items-center text-xl pt-1">
+      <p className="flex items-center lg:text-2xl md:text-xl sm:text-lg pt-1">
         <AiFillStar
-          className="w-6 text-yellow-500"
+          className="w-5 sm:w-6 lg:w-7 text-yellow-500 "
           size={"100%"}
         />
         {(modalInfo.attributes.averageRating * 0.1).toFixed(1)}/10{" "}
@@ -118,7 +110,7 @@ export default function Home({}) {
               className="text-red-500 ml-2"
               href={`https://www.youtube.com/watch?v=${modalInfo.attributes.youtubeVideoId}`}
             >
-              <AiFillYoutube className="w-7" size={"100%"} />
+              <AiFillYoutube className="md:w-7 w-6 lg:w-9" size={"100%"} />
             </a>
           </>
         ) : (
@@ -129,8 +121,8 @@ export default function Home({}) {
                   </div>
                   
                 </div>
-                <div className=" mt-2 max-h-[10vh] sm:max-h-[10] bg-blue-200 overflow-auto">
-  <p className="px-[5%] py-2   ">{modalInfo.attributes.description}</p>
+                <div className=" mt-2 max-h-[30vh]  bg-blue-200 overflow-auto">
+  <p className="px-[5%] py-2  md:text-lg lg:text-2xl  ">{modalInfo.attributes.description}</p>
 </div>
               </Dialog.Panel>
             </div>
@@ -166,14 +158,14 @@ export default function Home({}) {
       {modalInfo.titles[Object.keys(modalInfo.titles)[0]]}<IoIosArrowForward className="my-auto h-12 w-12" size={"100%"} />
     </h2>
     <div className="flex flex-wrap">
-      <p className="md:w-full w-1/2 text-xl my-1">
+      <p className="w-full text-xl my-1">
         {modalInfo.episodeCount} episodes •{" "}
         {modalInfo.episodeLength} minutes / each
       </p>
-      <p className="md:w-full w-1/2 text-xl my-1">
+      <p className="w-full text-xl my-1">
         {modalInfo.ageRating}
       </p>
-      <p className="md:w-full w-1/2 text-xl my-1">
+      <p className="w-full text-xl my-1">
         {modalInfo.createdAt ? (
           <span>
             {modalInfo.startDate.substring(0, 4)}
