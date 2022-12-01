@@ -36,7 +36,7 @@ export default function Nav() {
         <div className="h-16 w-auto md:w-[30%]">
           <img
             onClick={() => router.push("/")}
-            className="min-h-full  mx-auto md:mx-0"
+            className="h-full  mx-auto md:mx-0"
             src="/assets/logo.svg"
             alt=""
           />
@@ -61,7 +61,7 @@ export default function Nav() {
         <div className="w-[30%] hidden md:flex justify-end items-center">
           {!session ? (
             <button
-              onClick={() => router.push("/login")}
+              onClick={() => router.push("/signin")}
               className="text-white text-lg border-2 px-2 py-1 border-white hover:bg-white hover:text-red-500"
             >
               login/sign up
@@ -99,7 +99,7 @@ export default function Nav() {
           style={{ color: page == "profile" ? "red" : "gray" }}
           onClick={() => {
             if (session) return router.push(`/user/${session.name}`);
-            router.push("/login");
+            router.push("/signin");
           }}
         >
           {" "}

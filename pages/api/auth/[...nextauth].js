@@ -51,11 +51,11 @@ export default NextAuth({
 
       return session;
     },
-    async redirect({ url, baseUrl }) {
-      console.log("baseURL:", baseUrl);
-      console.log("url:", url);
-      return "/";
-    },
+    // async redirect({ url, baseUrl }) {
+    //   console.log("baseURL:", baseUrl);
+    //   console.log("url:", url);
+    //   return "/";
+    // },
   },
   secret: "test",
   jwt: {

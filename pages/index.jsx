@@ -23,7 +23,7 @@ export default function Home({}) {
       <Nav fixed={true} />
       <div
         // style={{ backgroundSize: "100% auto" }}
-        className="md:h-[30rem] h-[20rem] bg-[url('https://www.fanbolt.com/storage/2021/08/anime-iphone-wallpaper-800x500.jpg')] bg-no-repeat   bg-center bg-cover px-[10%]  pt-16"
+        className="md:h-[30rem] h-[20rem]  bg-[url('https://www.fanbolt.com/storage/2021/08/anime-iphone-wallpaper-800x500.jpg')] bg-no-repeat   bg-center bg-cover px-[10%]  pt-16"
       >
         <div className=" ml-auto md:w-1/2 w-2/3 h-full flex flex-col justify-center">
           <h2 className="text-center textShadow text text-xl lg:text-5xl md:w-2/3 text-white font-bold mx-auto  mb-12">
@@ -46,17 +46,17 @@ export default function Home({}) {
             <div>
               <Dialog.Panel
                 className={
-                  "lg:w-[60rem] md:w-[45rem] w-[90vw]  rounded bg-white border-2 relative"
+                  "lg:w-[60rem] md:w-[45rem] w-[90vw] max-h-[85vh]  rounded bg-white border-2 relative"
                 }
               >
                 <button
                   onClick={() => setOpen(false)}
-                  className="absolute right-0 top-0  w-12 h-12 p-2 rounded-full text-back bg-white hover:bg-slate-200"
+                  className="absolute right-0 top-0  w-12 h-12 p-2 rounded-full text-back md:bg-white hover:bg-slate-200"
                 >
                   <AiOutlineCloseCircle size={"100%"} />
                 </button>
                 <div className="md:flex w-full">
-                  <div className="md:w-1/5">
+                  <div className="md:w-1/5 w-[60%] mx-auto">
                     <img src={modalInfo.attributes.posterImage.original} alt="" />
                   </div>
                   <div className="w-full">
@@ -74,7 +74,7 @@ export default function Home({}) {
                       </div>
                       <IoIosArrowForward
                       style={{color:hoverName?"red":"black"}}
-                        className="my-auto h-12 w-12"
+                        className="my-auto lg:h-12 lg:w-12 w-8 h-8"
                         size={"100%"}
                       />
                     </h2>
@@ -129,7 +129,7 @@ export default function Home({}) {
                   </div>
                   
                 </div>
-                <div className="max-h-44 overflow-auto mt-2">
+                <div className=" mt-2 max-h-[10vh] sm:max-h-[10] bg-blue-200 overflow-auto">
   <p className="px-[5%] py-2   ">{modalInfo.attributes.description}</p>
 </div>
               </Dialog.Panel>

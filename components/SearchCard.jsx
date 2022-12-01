@@ -7,7 +7,8 @@ export default function SearchCard({ cardData }) {
     <div onClick={() => {
       router.push(`/anime/${cardData.id}`);
     }} className="border-y py-1 w-full lg:w-[45%] flex cursor-pointer hover:bg-gray-100">
-      <div className="lg:min-w-[5.5rem] lg:w-[5.5rem]  lg:h-[7.5rem] 
+      <div className="lg:min-w-[6.5rem] lg:w-[6.5rem]  lg:h-[8.5rem] 
+      md:min-w-[5.5rem] md:w-[5.5rem]  md:h-[7.5rem] 
        w-[4.5rem]  h-[5.5rem] flex overflow-hidden">
         <img className="w-full h-auto my-auto" src={cardData.attributes.posterImage.original} alt="" />
       </div>
